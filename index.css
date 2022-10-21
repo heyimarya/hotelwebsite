@@ -34,3 +34,28 @@ h1 p{
     margin-right: 50px;
     color: white;
 }
+.max-width{
+    max-width: 1240px;
+}
+.frm_head{
+    background: #333333;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 0;
+}
+.booking_details button.btn-close {
+    border: 0;
+    background: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+.booking_details dt {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 10px;
+}
+.error_message{
+    color: #000000;
+}
