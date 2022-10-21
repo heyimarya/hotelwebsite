@@ -1,0 +1,36 @@
+.box{
+    border: 1px solid rgb(196, 196, 196);
+    height: 300px;
+    width: 400px;
+    padding: 10px;
+    
+}
+.box:hover{
+    background-color: rgb(253, 182, 154);
+}
+.box-img{
+    text-align: center;
+}
+.containerscroll{
+    
+    margin-top:3%;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    overflow-x: scroll;
+    background-color: #1C2A44;
+    padding:2%;
+    border-radius: 25px;
+    color: white;
+    
+}
+.img-container{
+    display: flex;
+    flex-direction: row;
+}
+h1 p{ 
+    width: 200px;
+    height: 200px;
+    margin-right: 50px;
+    color: white;
+}

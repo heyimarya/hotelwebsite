@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Registration</title>
+  <link rel="icon" href="https://i.pinimg.com/originals/3d/c1/6c/3dc16c9a108acecc37680f0ac48fdc7a.jpg">
+  <!-- <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+
+<style>
+    .max-width{
+    max-width: 1240px;
+}
+.frm_head{
+    background: #333333;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 0;
+}
+.booking_details button.btn-close {
+    border: 0;
+    background: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+.booking_details dt {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 10px;
+}
+.error_message{
+    color: #000000;
+}
+</style>
+  <script>
+    function bookingadvance(){
+        advanceamt = document.getElementById("advanamount").value;
+            err_msg = document.getElementById("error_message");
+            if (advanceamt <= 0){
+                err_msg.innerHTML = "Please Enter advance amount";
+                document.getElementById("submit_btn").setAttribute('disabled', 'disabled');  
+            } else{
+                err_msg.innerHTML = "";
+                document.getElementById("submit_btn").removeAttribute('disabled');
+            }
+    }
+           
+        function BookingClick(){
+            document.getElementById("customername").innerHTML = document.getElementById("customer_name").value;
+            document.getElementById("checkdate").innerHTML = document.getElementById("date").value;
+            daysnum  = document.getElementById("ttldays").value;
+            document.getElementById("totaldays").innerHTML = daysnum;
+            totalpersons = document.getElementById("ttlpersons").value;
+            document.getElementById("totalpersons").innerHTML = totalpersons;
+
+            deluxroomname = "";
+            roomrent = 0;
+            amentitesname = "";
+            amentitesamt = 0;
+
+            deluxradio = document.getElementById("deluxroom");
+            suiteroom = document.getElementById("suiteroom");
+
+            if(deluxradio.checked){
+                deluxroomname = deluxradio.value;
+                roomrent = 5300;
+            }
+            if(suiteroom.checked){
+                deluxroomname = suiteroom.value;
+                roomrent = 5000;
+            }
+
+            ac_amentiradio = document.getElementById("ac_amenti");
+            lock_amentiradio = document.getElementById("lock_amenti");
+
+            if (ac_amentiradio.checked){
+                amentitesname += ac_amentiradio.value + "<br>";
+                amentitesamt = 5000;
+                roomrent = roomrent + amentitesamt;
+            }
+            if (lock_amentiradio.checked){
+                amentitesname += lock_amentiradio.value + "<br>";
+                amentitesamt = 3000;
+                roomrent = roomrent + amentitesamt;
+            }
+            document.getElementById("roomtype").innerHTML = deluxroomname;
+            document.getElementById("amentities").innerHTML =  amentitesname;
+            document.getElementById("advanceamount").innerHTML = advanceamt;
+            roomrent = daysnum  * roomrent;
+            if(totalpersons > 2){
+                roomrent = roomrent + ((totalpersons - 2) * 1000);
+            }
+
+
+            document.getElementById("balanceamount").innerHTML = "&#8377;" + (roomrent - advanceamt);
+        }
+        function Cleardata(){
+            window.location.reload();
+        }
+  </script>
+
+</head>
+<body>
+    <nav class="navbar bg-light justify-content-between shadow-lg">
+        <form class="container-fluid justify-content-center">
+           <div id="contact">
+            <button class="btn btn-light ms-4"><span class="bi bi-telephone-fill"></span> +97-8789822686</button>
+            <button class="btn btn-light ms-3"><span class="bi bi-envelope"></span> sauravarya5203590@gmail.com</button>
+
+           </div>
+            <div class="justify-content-center me-4">
+                <span class="bi bi-facebook fs-5 text-primary ms-5"></span>
+            <span class="bi bi-twitch fs-5 text-dark ms-5"></span>
+            <span class="bi bi-twitter fs-5 text-primary ms-5"></span>
+            <span class="bi bi-instagram fs-5 text-danger ms-5"></span>
+            
+            </div>
+            <div class="justify-content-center ms-3">
+                <button onclick="" class="btn btn-danger ms-2 fw-bolder text-light"><a href="./index.html" class="text-light">Home</a></button>
+
+            </div>
+            
+           
+        </form>
+
+    </nav>
+    
+
+
+    </div>
+    <nav class="navbar navbar-dark bg-dark mt-1">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bolder" href="#">ARYA DELUXE HOTEL</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title " id="offcanvasDarkNavbarLabel fw-bolder"><span class="bi bi-house-heart-fill"></span> ARYA HOTEL</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                  <!-- <a class="nav-link active" aria-current="page" href="#">Room Overview</a>
+                  <a class="nav-link active" aria-current="page" href="#">Contact Us</a> -->
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="bi bi-globe"></span>
+                    Language
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">हिंदी</a></li>
+                    <li><a class="dropdown-item" href="#">English</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-danger" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <header>
+       
+   
+    <section class="hotel_registration mt-3 mb-3 text-primary" id="booking">
+        <div class="container-fluid max-width">
+            <h2 class="text-center"><span class="bi bi-house-heart-fill"></span>Book Now</h2>
+            <div class="col-md-12">
+                <h2 class="frm_head fw-bolder"><span class="bi bi-person"></span>ENTER YOUR DETAILS</h2>
+                <form>
+                    <div class="row g-3 align-items-center mb-4 mt-4">
+                        <div class="col-md-6 col-12 col-xl-4 offset-xl-1">
+                          <label for="inputPassword6" class="col-form-label fw-bolder">Your Name</label>
+                        </div>
+                        <div class="col-md-6 col-12 col-xl-6">
+                          <input type="text" id="customer_name" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row g-3 align-items-center mb-4">
+                        <div class="col-md-6 col-12 col-xl-4 offset-xl-1">
+                          <label for="inputPassword6" class="col-form-label fw-bolder">Check In Date</label>
+                        </div>
+                        <div class="col-md-6 col-12 col-xl-6">
+                            <input type="date" id="date" class="form-control">                            
+                        </div>
+                      </div>
+                      <div class="row g-3 align-items-center mb-4">
+                        <div class="col-md-6 col-12 col-xl-4 offset-xl-1">
+                          <label for="inputPassword6" class="col-form-label fw-bolder">Total No of Days</label>
+                        </div>
+                        <div class="col-md-6 col-12 col-xl-6">
+                          <input type="number" id="ttldays" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row g-3 align-items-center mb-4">
+                        <div class="col-md-6 col-12 col-xl-4 offset-xl-1">
+                          <label for="inputPassword6" class="col-form-label fw-bolder">Total No of Persons</label>
+                        </div>
+                        <div class="col-md-6 col-12 col-xl-6">
+                          <input type="number" id="ttlpersons" class="form-control">
+                        </div>
+                      </div>
+                    </form>
+            </div>
+            <div class="col-md-12">
+                <h2 class="frm_head fw-bolder">Select Room Type</h2>
+                <div class="row mb-3">
+                    <div class="col-xl-4 offset-xl-2">
+                        <div class="card">
+                            <img src="https://images.pexels.com/photos/2549029/pexels-photo-2549029.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" height="250">
+                            <div class="card-header">
+                                <h4>Villa</h4>
+                            </div>
+                            <div class="card-footer">
+                                <h4> <input type="radio" id="deluxroom" name="roomtype" value="Delux Room" class="form-check-input">  &#8377; 5300/- </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <img src="https://images.pexels.com/photos/7031731/pexels-photo-7031731.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" height="250">
+                            <div class="card-header">
+                                <h4>Suite Room</h4>
+                            </div>
+                            <div class="card-footer">
+                                <h4> <input type="radio" id="suiteroom" name="roomtype" value="Suite Room" class="form-check-input">  &#8377; 5000/- </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h2 class="frm_head">Select Amentities</h2>
+                <div class="row mb-3">
+                    <div class="col-xl-4 offset-xl-2">
+                        <div class="card">
+                            <img src="https://images.pexels.com/photos/7534273/pexels-photo-7534273.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" height="250">
+                            <div class="card-header">
+                                <h4>A.C Rooms</h4>
+                            </div>
+                            <div class="card-footer">
+                                <h4> <input type="checkbox" id="ac_amenti" value="A/C" class="form-check-input">  &#8377; 5000/- </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <img src="https://images.pexels.com/photos/13201475/pexels-photo-13201475.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" height="250">
+                            <div class="card-header">
+                                <h4>Non A.C Rooms</h4>
+                            </div>
+                            <div class="card-footer">
+                                <h4> <input type="checkbox" id="lock_amenti" value="Locker" class="form-check-input">  &#8377; 3000/- </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h2 class="frm_head fw-bolder text-danger">Advance Amount</h2>
+                <form>
+                    <div class="row g-3 align-items-center mb-4 mt-4">
+                        <div class="col-md-6 col-12 col-xl-4 offset-xl-1">
+                          <label for="inputPassword6" class="col-form-label fw-bolder text-success">Advance Amount</label>
+                        </div>
+                        <div class="col-md-6 col-12 col-xl-6">
+                          <input type="number" id="advanamount" class="form-control" onkeyup="bookingadvance()">
+                          <div id="error_message"></div>
+                        </div>
+                      </div>
+
+                    </form>
+            </div>
+            <div class="col-md-12 text-center">
+
+            <button type="submit" class="btn btn-danger fw-bolder w-25" data-bs-target="#hotel_booking" data-bs-toggle="modal" id="submit_btn" onclick="BookingClick()" disabled="disabled">Book</button>
+        </div>
+        <div class="modal fade booking_details" id="hotel_booking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-primary">
+                        <h2 class="fw-bolder text-success">Booking Receipt</h2>
+                        <button class="btn-close" data-bs-dismiss="modal">X</button>
+                    </div>
+                    <div class="modal-body text-dark">
+                        <dl class="row">
+                            <dt class="col-5">Customer name  : </dt>
+                            <dd class="col-7" id="customername"></dd>
+                            <dt class="col-5">Check In Date  : </dt>
+                            <dd class="col-7" id="checkdate"></dd>
+                            <dt class="col-5">Total No Of Days  : </dt>
+                            <dd class="col-7" id="totaldays"></dd>
+                            <dt class="col-5">Total No Of Persons  : </dt>
+                            <dd class="col-7" id="totalpersons"></dd>
+                            <dt class="col-5">Room Type  : </dt>
+                            <dd class="col-7" id="roomtype"></dd>
+                            <dt class="col-5">Amentities  : </dt>
+                            <dd class="col-7" id="amentities"></dd>
+                            <dt class="col-5">Advance Amount  : </dt>
+                            <dd class="col-7" id="advanceamount"></dd>
+                            <dt class="col-5">Balance Amount  : </dt>
+                            <dd class="col-7" id="balanceamount"></dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="window.print()" class="btn btn-success">Print Receipt</button>
+                        <button data-bs-dismiss="modal" class="btn btn-primary" onclick="Cleardata()">OK</button>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        </div>
+    </section>
+     <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+     <script src="../node_modules/jquery/dist/jquery.js"></script> -->
+</body>
+</html>
